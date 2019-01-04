@@ -95,6 +95,10 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
   if (detectBrowserLanguage) {
     let browserLocale
 
+    console.log('isSpa', isSpa)
+    console.log('process.static', process.static)
+    console.log('req', req)
+
     if (useCookie && (browserLocale = getCookie()) && browserLocale !== 1 && browserLocale !== '1') {
       // Get preferred language from cookie if present and enabled
       // Exclude 1 for backwards compatibility and fallback when fallbackLocale is empty
