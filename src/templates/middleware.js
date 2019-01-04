@@ -98,7 +98,7 @@ middleware['i18n'] = async ({ app, req, res, route, store, redirect, isHMR }) =>
     if (useCookie && (browserLocale = getCookie()) && browserLocale !== 1 && browserLocale !== '1') {
       // Get preferred language from cookie if present and enabled
       // Exclude 1 for backwards compatibility and fallback when fallbackLocale is empty
-    } else if (isSpa && typeof navigator !== 'undefined' && navigator.language) {
+    } else if ((isSpa || process.static) && typeof navigator !== 'undefined' && navigator.language) {
       // Get browser language either from navigator if running in mode SPA, or from the headers
       browserLocale = navigator.language.toLocaleLowerCase().substring(0, 2)
     } else if (req && typeof req.headers['accept-language'] !== 'undefined') {
